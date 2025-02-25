@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Ladataan Titanic-data
+# Titanic-data
 @st.cache_data
 def load_data():
     file_path = r"D:\Koulu\Low-Code\Tehtävä 4\Titanic Data.xlsx"
@@ -14,14 +14,14 @@ data = load_data()
 # Otsikko
 st.title("🚢 Titanic Data Dashboard")
 
-# Sivupalkki (Asetukset)
+# Sivupalkki
 st.sidebar.header("⚙️ Asetukset")
 
-# Ikärajain (slider)
+# Ikärajain
 age_range = st.sidebar.slider("Valitse ikähaarukka:", int(data["Age"].min()), int(data["Age"].max()), (10, 50))
 filtered_data = data[(data["Age"] >= age_range[0]) & (data["Age"] <= age_range[1])]
 
-# Käytetään containeria rakenteen selkeyttämiseen
+# Container rakenteen selkeyttämiseen
 with st.container():
     st.header("🧑‍🤝‍🧑 Sukupuolijakauma")
     fig, ax = plt.subplots()
